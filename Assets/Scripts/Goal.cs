@@ -23,7 +23,7 @@ public class Goal : MonoBehaviour
            _winSound.Play();
            _levelMenu.ActivateWinMenu();
            int currentLevel = SceneManager.GetActiveScene().buildIndex - 1;
-           if (GameManager.s_highestLevel < currentLevel + 1) ++GameManager.s_highestLevel;
+           if (GameManager.s_highestLevel < Mathf.Max(currentLevel + 1, 5)) ++GameManager.s_highestLevel;
            collision.gameObject.GetComponent<Player>().enabled = false;
            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
            collision.gameObject.GetComponent<Animator>().enabled = false;
