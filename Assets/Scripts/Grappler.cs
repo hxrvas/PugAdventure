@@ -66,7 +66,7 @@ public class Grappler : MonoBehaviour
             if ((Input.GetKeyDown (KeyCode.Mouse1))) _retractSound.Play();
             if (Input.GetKey(KeyCode.Mouse1))
             {
-                
+                if (!_retractSound.isPlaying) _retractSound.Play();
                 _distanceJoint.distance = 1f;
             }
 
