@@ -124,13 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ccb71e9ded84f4d9f312277d4ac042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  distanceJoint: {fileID: 0}
-  player: {fileID: 0}
-  tonguePoint: {fileID: 0}
-  grappleSound: {fileID: 6266557040045538605}
-  retractSound: {fileID: 3187660753598424777}
+  _grappleSound: {fileID: 6266557040045538605}
+  _retractSound: {fileID: 3187660753598424777}
 --- !u!82 &6266557040045538605
 AudioSource:
   m_ObjectHideFlags: 0

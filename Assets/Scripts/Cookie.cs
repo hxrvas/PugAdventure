@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Cookie : MonoBehaviour
 {
-    bool pointsGiven = false;
+    // Properties 
+    // Fields
+    bool _pointsGiven = false;
+    // Unity Methods 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !pointsGiven)
+        if (collision.CompareTag("Player") && !_pointsGiven)
         {
-            pointsGiven = true;
-            Movement player = collision.gameObject.GetComponent<Movement>();
-            player.addCookie();
-            player.displayPoints();
+            _pointsGiven = true;
+            Player player = collision.gameObject.GetComponent<Player>();
+            player.AddCookie();
             Destroy(this.gameObject);
         }
     }

@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 104059}
   - component: {fileID: 104058}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,9 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0df4d7430d91a41a34577aa810f94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitSeconds: 1
-  levelsMenu: {fileID: 1019021958}
-  levels:
+  _waitSeconds: 1
+  _levelsMenu: {fileID: 1019021958}
+  _levels:
   - {fileID: 2093293433}
   - {fileID: 2108013609}
   - {fileID: 999279300}
@@ -528,7 +528,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: openLevelsMenu
+        m_MethodName: OpenLevelsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -673,7 +673,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: play
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1589,7 +1589,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: b4
+        m_MethodName: Level4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1841,7 +1841,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: b2
+        m_MethodName: Level2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2082,7 +2082,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: b5
+        m_MethodName: Level5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2251,7 +2251,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: closeLevelsMenu
+        m_MethodName: CloseLevelsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2479,7 +2479,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: b3
+        m_MethodName: Level3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3979,7 +3979,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: tutorial
+        m_MethodName: Tutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4580,7 +4580,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 104057}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: b1
+        m_MethodName: Level1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

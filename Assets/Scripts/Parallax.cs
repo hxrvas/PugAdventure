@@ -4,33 +4,29 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
+    // Properties
+    // Fields
+    private Transform _player;
+    private Camera _cam;
+    private Vector2 _startPosition;
+    private float _startZ;
+    private Vector2 _travel => (Vector2)_cam.transform.position - _startPosition;
+    private float _distanceFromSubject => transform.position.z - _player.position.z;
+    private float _clippingPlane => (_cam.transform.position.z + (_distanceFromSubject > 0 ? _cam.farClipPlane : _cam.nearClipPlane));
+    private float _parallaxFactor => Mathf.Abs(_distanceFromSubject)/_clippingPlane;
 
-    public Camera cam;
-    public Transform subject;
-
-    Vector2 startPosition;
-    float startZ;
-
-
-
-    Vector2 travel => (Vector2)cam.transform.position - startPosition;
-
-    float distanceFromSubject => transform.position.z - subject.position.z;
-    float clippingPlane => (cam.transform.position.z + (distanceFromSubject > 0 ? cam.farClipPlane : cam.nearClipPlane));
-    float parallaxFactor => Mathf.Abs(distanceFromSubject)/clippingPlane;
-    // Start is called before the first frame update
+    // Unity Methods
     void Start()
     {
-        startPosition = transform.position;
-        startZ = transform.position.z;
+        _player = FindObjectOfType<Player>().transform;
+        _cam = FindObjectOfType<Camera>();
+        _startPosition = transform.position;
+        _startZ = transform.position.z;
     }
-
-    // Update is called once per frame
     void Update()
     {
-
-        Vector2 newPos = startPosition + travel * parallaxFactor;
-        transform.position = new Vector3(newPos.x, newPos.y, startZ);
-
+        Vector2 newPos = _startPosition + _travel * _parallaxFactor;
+        transform.position = new Vector3(newPos.x, newPos.y, _startZ);
     }
+    // Other Methods
 }

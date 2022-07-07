@@ -4,72 +4,80 @@ using UnityEngine;
 
 public class Grappler : MonoBehaviour
 {
-    public LineRenderer lineRenderer;
-    public DistanceJoint2D distanceJoint;
-    public Movement player;
-    public Transform tonguePoint;
-    bool mouseOver = false;
-    bool active = false;
+    // Properties
+    //Fields
+    
+    [SerializeField] private AudioSource _grappleSound;
+    [SerializeField] private AudioSource _retractSound;
 
-    public AudioSource grappleSound;
-    public AudioSource retractSound;
-    // Start is called before the first frame update
+    private LineRenderer _lineRenderer;
+    private DistanceJoint2D _distanceJoint;
+    private Player _player;
+    private Transform _leashPoint;
+
+    private bool _isMouseOver = false;
+    private bool _isActive = false;
+    // Unity Methods
     void Start()
     {
-        distanceJoint.enabled = false;
+        _player = FindObjectOfType<Player>();
+        _lineRenderer = _player.GetComponent<LineRenderer>();
+        _distanceJoint = _player.GetComponent<DistanceJoint2D>();
+        _leashPoint = _player.transform.GetChild(1).transform;
+        _distanceJoint.enabled = false;
     }
 
-    // Update is called once per frame
     void OnMouseOver()
     {
-        mouseOver = true;
+        _isMouseOver = true;
     }
 
     private void OnMouseExit()
     {
-        mouseOver = false;
+        _isMouseOver = false;
     }
 
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && mouseOver)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _isMouseOver)
         {
-            grappleSound.Play();
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, tonguePoint.position);
-            distanceJoint.connectedAnchor = transform.position;
-            distanceJoint.enabled = true;
-            lineRenderer.enabled = true;
-            player.isHanging = true;
-            distanceJoint.distance = Vector2.Distance(tonguePoint.position, transform.position);
-            active = true;
+            _grappleSound.Play();
+            _lineRenderer.SetPosition(0, transform.position);
+            _lineRenderer.SetPosition(1, _leashPoint.position);
+            _distanceJoint.connectedAnchor = transform.position;
+            _distanceJoint.enabled = true;
+            _lineRenderer.enabled = true;
+            _player.Grappling = true;
+            _distanceJoint.distance = Vector2.Distance(_leashPoint.position, transform.position);
+            _isActive = true;
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            retractSound.Stop();
-            distanceJoint.enabled = false;
-            lineRenderer.enabled = false;
-            player.isHanging = false;
-            active = false;
+            _retractSound.Stop();
+            _distanceJoint.enabled = false;
+            _lineRenderer.enabled = false;
+            _player.Grappling = false;
+            _isActive = false;
         }
 
-        if (active)
+        if (_isActive)
         {
-            if ((Input.GetKeyDown (KeyCode.Mouse1))) retractSound.Play();
+            if ((Input.GetKeyDown (KeyCode.Mouse1))) _retractSound.Play();
             if (Input.GetKey(KeyCode.Mouse1))
             {
                 
-                distanceJoint.distance = 1f;
+                _distanceJoint.distance = 1f;
             }
 
             else if (Input.GetKeyUp(KeyCode.Mouse1))
             {
-                retractSound.Stop();
-                distanceJoint.distance = Vector2.Distance(tonguePoint.position, transform.position);
+                _retractSound.Stop();
+                _distanceJoint.distance = Vector2.Distance(_leashPoint.position, transform.position);
             }
 
-            lineRenderer.SetPosition(1, tonguePoint.position);
+            _lineRenderer.SetPosition(1, _leashPoint.position);
         }
     }
+    // Other Methods
 }

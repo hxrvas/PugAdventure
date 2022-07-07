@@ -1,126 +1,127 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public GameObject winMenu;
-    public GameObject loseMenu;
-    public Image[] stars;
-    public Sprite fullStar;
-    public Movement player;
-    public int StarPoints1;
-    public int StarPoints2;
-    public int StarPoints3;
-    bool gamePaused;
+    // Properties
+    // Fields
+    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _winMenu;
+    [SerializeField] private GameObject _loseMenu;
+    [SerializeField] private Image[] _stars;
+    [SerializeField] private Sprite _fullStarSprite;
+    [SerializeField] private int _starPoints1;
+    [SerializeField] private int _starPoints2;
+    [SerializeField] private int _starPoints3;
 
-    GameManager gameManager;
+    bool _gamePaused;
+    GameManager _gameManager;
+    private Player _player;
 
-    void Start()
+    // Unity Methods
+    void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        gamePaused = false;
+        _gameManager = FindObjectOfType<GameManager>();
+        _player = FindObjectOfType<Player>();
+        _gamePaused = false;
     }
 
-    public void togglePauseMenu()
+    void Update()
     {
-        gamePaused = !gamePaused;
-
-        if (gamePaused)
+        if (Input.GetKeyDown(KeyCode.Tab) && !_winMenu.activeSelf)
         {
-            gameManager.setLowLevel();
-            player.enabled = false;
-            pauseMenu.SetActive(true);
+            TogglePauseMenu();
+        }
+    }
+    // Other Methods
+    public void TogglePauseMenu()
+    {
+        _gamePaused = !_gamePaused;
+
+        if (_gamePaused)
+        {
+            _gameManager.SetLowLevel();
+            _player.enabled = false;
+            _pauseMenu.SetActive(true);
             Time.timeScale = 0;
         }
         else
         {
-            gameManager.setHighLevel();
-            player.enabled = true;
-            pauseMenu.SetActive(false);
+            _gameManager.SetHighLevel();
+            _player.enabled = true;
+            _pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }
     }
 
-    public void activateWinMenu()
+    public void ActivateWinMenu()
     {
-        gameManager.setLowLevel();
+        _gameManager.SetLowLevel();
         Time.timeScale = 0;
-        player.enabled = false;
-        winMenu.SetActive(true);
+        _player.enabled = false;
+        _winMenu.SetActive(true);
 
-        if (player.cookies >= StarPoints1)
+        if (_player.Cookies >= _starPoints1)
         {
-            stars[2].sprite = fullStar;
+            _stars[2].sprite = _fullStarSprite;
         }
 
-        if (player.cookies >= StarPoints2)
+        if (_player.Cookies >= _starPoints2)
         {
-            stars[1].sprite = fullStar;
+            _stars[1].sprite = _fullStarSprite;
         }
 
-        if (player.cookies >= StarPoints3)
+        if (_player.Cookies >= _starPoints3)
         {
-            stars[0].sprite = fullStar;
+            _stars[0].sprite = _fullStarSprite;
         }
     }
 
-    public void activateLoseMenu()
+    public void ActivateLoseMenu()
     {
-        gameManager.setLowLevel();
-        loseMenu.SetActive(true);
+        _gameManager.SetLowLevel();
+        _loseMenu.SetActive(true);
     }
 
-
-    public void nextLevel()
+    public void NextLevel()
     {
-        gameManager.stopMusic();
-        gameManager.setHighLevel();
+        _gameManager.StopMusic();
+        _gameManager.SetHighLevel();
         Time.timeScale = 1;
-        Invoke("loadNextLevel", 1f);
+        Invoke("LoadNextLevel", 1f);
     }
 
-    public void restart()
+    public void Restart()
     {
-        gameManager.stopMusic();
-        gameManager.setHighLevel();
-        loadCurrentLevel();
+        _gameManager.StopMusic();
+        _gameManager.SetHighLevel();
+        LoadCurrentLevel();
     }
 
-    public void mainMenu()
+    public void MainMenu()
     {
-        gameManager.stopMusic();
-        gameManager.setHighLevel();
-        loadMainMenu();
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab) && !winMenu.activeSelf)
-        {
-            togglePauseMenu();
-        }
+        _gameManager.StopMusic();
+        _gameManager.SetHighLevel();
+        LoadMainMenu();
     }
 
-    public void loadMainMenu() 
+    public void LoadMainMenu() 
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
-        gameManager.menuMusic();
+        _gameManager.MenuMusic();
     }
-    public void loadNextLevel()
+    public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        gameManager.levelMusic();
+        _gameManager.LevelMusic();
     }
 
-    public void loadCurrentLevel()
+    public void LoadCurrentLevel()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        gameManager.levelMusic();
+        _gameManager.LevelMusic();
     }
-
 }

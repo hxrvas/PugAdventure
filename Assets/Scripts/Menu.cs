@@ -6,98 +6,101 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public float waitSeconds = 1f;
+    // Properties
+    // Fields
+    [SerializeField] private float _waitSeconds = 1f;
+    [SerializeField] private GameObject _levelsMenu;
+    [SerializeField] private Button[] _levels;
 
-    public GameObject levelsMenu;
-    public Button[] levels;
-    public void play()
+    // Unity Methods
+    public void Play()
     {
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().stopMusic();
-        Invoke("loadGame", waitSeconds);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().StopMusic();
+        Invoke("LoadGame", _waitSeconds);
+    }
+    // Other Methods
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(GameManager.s_highestLevel+1);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().LevelMusic();
     }
 
-    public void loadGame()
+    public void OpenLevelsMenu()
     {
-        SceneManager.LoadScene(GameManager.highestLevel+1);
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().levelMusic();
-    }
-
-    public void openLevelsMenu()
-    {
-        levelsMenu.SetActive(true);
-        int unlockedLevels = GameManager.highestLevel;
+        _levelsMenu.SetActive(true);
+        int unlockedLevels = GameManager.s_highestLevel;
         for (int i = 0; i < unlockedLevels; i++)
         {
-            levels[i].interactable = true;
+            _levels[i].interactable = true;
         }
     }
 
-    public void tutorial()
+    public void Tutorial()
     {
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().stopMusic();
-        Invoke("loadTutorial", waitSeconds);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().StopMusic();
+        Invoke("LoadTutorial", _waitSeconds);
     }
-    public void b1()
+    public void Level1()
     {
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().stopMusic();
-        Invoke("load1", waitSeconds);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().StopMusic();
+        Invoke("Load1", _waitSeconds);
     }
-    public void b2()
+    public void Level2()
     {
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().stopMusic();
-        Invoke("load2", waitSeconds);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().StopMusic();
+        Invoke("Load2", _waitSeconds);
     }
-    public void b3()
+    public void Level3()
     {
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().stopMusic();
-        Invoke("load3", waitSeconds);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().StopMusic();
+        Invoke("Load3", _waitSeconds);
     }
-    public void b4()
+    public void Level4()
     {
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().stopMusic();
-        Invoke("load4", waitSeconds);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().StopMusic();
+        Invoke("Load4", _waitSeconds);
     }
-    public void b5()
+    public void Level5()
     {
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().stopMusic();
-        Invoke("load5", waitSeconds);
-    }
-
-    public void closeLevelsMenu()
-    {
-        levelsMenu.SetActive(false);
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().StopMusic();
+        Invoke("Load5", _waitSeconds);
     }
 
-    public void loadTutorial()
+    public void CloseLevelsMenu()
+    {
+        _levelsMenu.SetActive(false);
+    }
+
+    private void LoadTutorial()
     {
         SceneManager.LoadScene(2);
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().levelMusic();
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().LevelMusic();
     }
-    public void load1()
+    private void Load1()
     {
         SceneManager.LoadScene(3);
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().levelMusic();
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().LevelMusic();
     }
 
-    public void load2()
+    private void Load2()
     {
         SceneManager.LoadScene(4);
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().levelMusic();
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().LevelMusic();
     }
 
-    public void load3()
+    private void Load3()
     {
         SceneManager.LoadScene(5);
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().levelMusic();
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().LevelMusic();
     }
-    public void load4()
+    private void Load4()
     {
         SceneManager.LoadScene(6);
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().levelMusic();
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().LevelMusic();
     }
-    public void load5()
+    private void Load5()
     {
         SceneManager.LoadScene(7);
-        FindObjectOfType<GameManager>().GetComponent<GameManager>().levelMusic();
+        FindObjectOfType<GameManager>().GetComponent<GameManager>().LevelMusic();
     }
 }

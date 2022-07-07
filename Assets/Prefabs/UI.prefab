@@ -407,8 +407,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7098360801323368542}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: mainMenu
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -553,7 +553,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7098360801323368542}
         m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
-        m_MethodName: restart
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -866,8 +866,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7098360801323368542}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: togglePauseMenu
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: TogglePauseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1230,7 +1230,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7098360801323368542}
         m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
-        m_MethodName: nextLevel
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1386,8 +1386,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7098360801323368542}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: restart
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1963,18 +1963,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb644d4249b76c943bf1aff14e84ba9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 7098360801688724002}
-  winMenu: {fileID: 7098360800321353570}
-  loseMenu: {fileID: 660368920608741267}
-  stars:
+  _pauseMenu: {fileID: 7098360801688724002}
+  _winMenu: {fileID: 7098360800321353570}
+  _loseMenu: {fileID: 660368920608741267}
+  _stars:
   - {fileID: 7098360801172740998}
   - {fileID: 7098360800210190798}
   - {fileID: 7098360801851005055}
-  fullStar: {fileID: 21300000, guid: 3f9baa01651eeb441a961809fe964ced, type: 3}
-  player: {fileID: 0}
-  StarPoints1: 10
-  StarPoints2: 50
-  StarPoints3: 100
+  _fullStarSprite: {fileID: 21300000, guid: 3f9baa01651eeb441a961809fe964ced, type: 3}
+  _starPoints1: 0
+  _starPoints2: 0
+  _starPoints3: 0
 --- !u!82 &4305555325824393698
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2289,8 +2288,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7098360801323368542}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: mainMenu
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2656,8 +2655,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7098360801323368542}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: mainMenu
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

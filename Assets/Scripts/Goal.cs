@@ -5,22 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
+    //Properties
+    //Fields
+    private AudioSource _winSound;
+    private LevelMenu _levelMenu;
 
-    public LevelMenu menu;
-
-    [SerializeField] private AudioSource winSound;
+    // Unity Methods
+    private void Awake()
+    {
+        _winSound = GetComponent<AudioSource>();
+        _levelMenu = FindObjectOfType<LevelMenu>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-           winSound.Play();
-           menu.activateWinMenu();
+           _winSound.Play();
+           _levelMenu.ActivateWinMenu();
            int currentLevel = SceneManager.GetActiveScene().buildIndex - 1;
-           if (GameManager.highestLevel < currentLevel + 1) ++GameManager.highestLevel;
-           collision.gameObject.GetComponent<Movement>().enabled = false;
+           if (GameManager.s_highestLevel < currentLevel + 1) ++GameManager.s_highestLevel;
+           collision.gameObject.GetComponent<Player>().enabled = false;
            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
            collision.gameObject.GetComponent<Animator>().enabled = false;
            collision.gameObject.tag = tag;
         }
     }
+    // Other Methods
 }

@@ -178,15 +178,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36da9dda0c0299c4fafd11c9d71bcbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 2777
-  m_CoyoteTime: 0.1
-  m_MovementSmoothing: 0.1
-  m_AirMovementSmoothing: 0.3
-  m_AirControl: 1
-  m_WhatIsGround:
+  _jumpForce: 2777
+  _coyoteTime: 0.1
+  _movementSmoothing: 0.1
+  _airMovementSmoothing: 0.3
+  _airControl: 1
+  _groundMask:
     serializedVersion: 2
     m_Bits: 64
-  m_GroundCheck: {fileID: 3539929719266283870}
+  _groundCheck: {fileID: 3539929719266283870}
 --- !u!114 &3539929720774191042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,13 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219ba7eb60534e8449a839a9c65bd115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 3539929720625989429}
-  animator: {fileID: 3539929720625989430}
-  rb: {fileID: 3539929720625989431}
-  speed: 77
-  isHanging: 0
-  cookies: 0
-  points: {fileID: 0}
+  _speed: 77
+  _pointsText: {fileID: 0}
 --- !u!61 &3539929720625989419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -230,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.25, y: 2}
+  m_Size: {x: 2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!58 &3539929720625989428
 CircleCollider2D:
@@ -245,9 +240,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.6}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
 --- !u!120 &3539929720774191045
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -473,14 +468,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16b4f04df3d8c042b06f1333c9ad3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steps:
+  _steps:
   - {fileID: 8300000, guid: 0844a5ace3c83d24a966701de804f023, type: 3}
   - {fileID: 8300000, guid: b43433af34c0f274c926e128f7d458e2, type: 3}
   - {fileID: 8300000, guid: 8321e507aedabd943946179e0db05edd, type: 3}
   - {fileID: 8300000, guid: 0ab683e7027c91745a162ac7fad71409, type: 3}
-  stepSource: {fileID: 3539929720625989417}
-  cookieSource: {fileID: 6962372808077748364}
-  jumpSource: {fileID: 2529971222138022047}
+  _stepSource: {fileID: 3539929720625989417}
+  _cookieSource: {fileID: 6962372808077748364}
+  _jumpSource: {fileID: 2529971222138022047}
 --- !u!82 &6962372808077748364
 AudioSource:
   m_ObjectHideFlags: 0
