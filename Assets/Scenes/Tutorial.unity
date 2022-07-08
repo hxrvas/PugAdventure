@@ -19630,9 +19630,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4076048992368995205}
     - target: {fileID: 5151772656608173506, guid: 14655afc1c4c9ae4fa8e78b14be90c33, type: 3}
+      propertyPath: _impulseTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151772656608173506, guid: 14655afc1c4c9ae4fa8e78b14be90c33, type: 3}
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 4076048992368995208}
+    - target: {fileID: 5151772656608173506, guid: 14655afc1c4c9ae4fa8e78b14be90c33, type: 3}
+      propertyPath: _impulseForce
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5151772656608173506, guid: 14655afc1c4c9ae4fa8e78b14be90c33, type: 3}
       propertyPath: distanceJoint
       value: 

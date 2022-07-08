@@ -61,7 +61,12 @@ public class CharacterController2D : MonoBehaviour
 		{
 			Vector3 targetVelocity = new Vector2(move * 10f, _rb.velocity.y);
 			if (_isGrounded) _rb.velocity = Vector3.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, _movementSmoothing);
-			else _rb.velocity = Vector3.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, _airMovementSmoothing);
+			else
+            {
+				if (move > 0 && targetVelocity.x > 0 || move < 0 && targetVelocity.x < 0) _rb.velocity = Vector3.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, _airMovementSmoothing * 3);
+				else _rb.velocity = Vector3.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, _airMovementSmoothing);
+			}
+            
 
 			if (move > 0 && !_facingRight)
 			{
